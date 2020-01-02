@@ -12,23 +12,11 @@ class FavoriteList extends Model
 {
     use SoftDeletes, HasUuid, HasJsonColumn;
 
-    protected $fillable = ['valid_until', 'name'];
+    protected $fillable = ['valid_until', 'name', 'json', 'relation_type', 'member_role'];
 
     protected $casts = [
         'valid_until' => 'datetime'
     ];
-
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = false;
-
-    public function isOwnerShadowUser()
-    {
-        return $this->owner->is_shadow;
-    }
 
     /** Relationships **/
     public function owner()
