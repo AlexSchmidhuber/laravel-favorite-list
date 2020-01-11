@@ -17,7 +17,7 @@ class CreateFavoriteListsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->softDeletes();
-            $table->date('valid_until')->null();
+            $table->date('valid_until')->nullable();
 
             $table->uuid('uuid');
             $table->string('name');
