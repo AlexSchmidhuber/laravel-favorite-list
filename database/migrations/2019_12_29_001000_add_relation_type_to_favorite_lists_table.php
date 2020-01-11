@@ -13,7 +13,7 @@ class AddRelationTypeToFavoriteListsTable extends Migration
      */
     public function up()
     {
-        Schema::table('favorite_lists', function (Blueprint $table) {
+        Schema::table('favorite_listables', function (Blueprint $table) {
             $table->enum('relation_type', ['member', 'listitem'])->nullable()->default('listitem');
             $table->string('member_role')->nullable();
         });
@@ -26,7 +26,7 @@ class AddRelationTypeToFavoriteListsTable extends Migration
      */
     public function down()
     {
-        Schema::table('favorite_lists', function (Blueprint $table) {
+        Schema::table('favorite_listables', function (Blueprint $table) {
             $table->dropColumn('relation_type', 'member_role');
         });
     }

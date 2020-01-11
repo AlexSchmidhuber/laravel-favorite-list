@@ -18,10 +18,20 @@ class FavoriteList extends Model
         'valid_until' => 'datetime'
     ];
 
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     /** Relationships **/
     public function owner()
     {
-        return $this->belongsTo(config('user.model', \App\User::class), 'user_id');
+        return $this->belongsTo(config('auth.providers.users.model', \App\User::class), 'user_id');
     }
 
     public function items()
