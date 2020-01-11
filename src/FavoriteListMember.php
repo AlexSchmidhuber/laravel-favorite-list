@@ -4,10 +4,10 @@ namespace AlexSchmidhuber\FavoriteList;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use AlexSchmidhuber\FavoriteList\FavoriteList;
-use AlexSchmidhuber\FavoriteList\Scopes\ListitemScope;
+use AlexSchmidhuber\FavoriteList\Scopes\MemberScope;
 use AlexSchmidhuber\LaravelTraitCollection\Traits\ORM\HasJsonColumn;
 
-class FavoriteListItem extends Pivot
+class FavoriteListMember extends Pivot
 {
     use HasJsonColumn;
 
@@ -15,10 +15,10 @@ class FavoriteListItem extends Pivot
     {
         parent::boot();
 
-        static::addGlobalScope(new ListitemScope);
+        static::addGlobalScope(new MemberScope);
 
         static::creating(function ($model) {
-            $model->relation_type = 'listitem';
+            $model->relation_type = 'member';
         });
     }
 
