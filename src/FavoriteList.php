@@ -38,4 +38,9 @@ class FavoriteList extends Model
     {
         return $this->hasMany(FavoriteListItem::class);
     }
+
+    public function members()
+    {
+        return $this->hasMany(FavoriteListMember::class);
+    }
 }
